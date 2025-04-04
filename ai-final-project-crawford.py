@@ -15,9 +15,9 @@ puzzle = []
 for row in range(9):
     cur_row = []
     for col in range(9):
-        cellnum = (row)(col)
+        cellnum = f'f{row}{col}'
         cell = soup.find('input', id=cellnum)
-        value = cell.get('value') if cell else 0
+        value = cell.get('value') if cell and cell.get('value') else 0
         cur_row.append(int(value))
     puzzle.append(cur_row)
 
