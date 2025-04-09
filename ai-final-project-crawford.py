@@ -24,3 +24,26 @@ for row in range(9):
 # printing puzzle out
 for row in puzzle:
     print(row)
+
+# agent to solve puzzle
+# first by checking if there are any cells with only one possible number
+# then through backtracking 
+
+# function to determine if a move is valid
+def is_valid(board, row, col, num):
+
+    # checking rows and columns
+    if num in board[row]:
+        return False
+    if num in [board[r][col] for r in range(9)]:
+        return False
+    
+    # checking 3x3 box
+    start_row, start_col = 3 * (row // 3), 3 * (col // 3)
+    box = [board[r][c] for r in range(start_row, start_row + 3)
+           for c in range(start_col, start_col + 3)]
+    if num in box:
+        return False
+    
+    return True
+
