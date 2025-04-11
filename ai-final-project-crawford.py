@@ -59,6 +59,8 @@ def fill_obvious(board):
                     if len(possible) == 1:
                         board[row][col] = possible[0]
                         progress = True
+                        for row in board:
+                            print(row)
 
 # call the function to fill every cell with only one possible solution
 fill_obvious(puzzle)
