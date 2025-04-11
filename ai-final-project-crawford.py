@@ -55,6 +55,10 @@ def fill_obvious(board):
         for row in range(9):
             for col in range(9):
                 if board[row][col] == 0:
-                    
+                    possible = [num for num in range(1,10) if is_valid(board, row, col, num)]
+                    if len(possible) == 1:
+                        board[row][col] = possible[0]
+                        progress = True
 
 # call the function to fill every cell with only one possible solution
+fill_obvious(puzzle)
