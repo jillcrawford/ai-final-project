@@ -51,7 +51,7 @@ def is_valid(board, row, col, num):
 def fill_obvious(board):
     progress = True
     while progress:
-        progess = False
+        progress = False
         for row in range(9):
             for col in range(9):
                 if board[row][col] == 0:
@@ -59,8 +59,11 @@ def fill_obvious(board):
                     if len(possible) == 1:
                         board[row][col] = possible[0]
                         progress = True
-                        for row in board:
-                            print(row)
+#                        for r in board:
+#                            print(r)
 
 # call the function to fill every cell with only one possible solution
 fill_obvious(puzzle)
+print("-----------")
+for r in puzzle:
+    print(r)
