@@ -47,3 +47,14 @@ def is_valid(board, row, col, num):
     
     return True
 
+# search through cells and see which spaces only have one valid number
+def fill_obvious(board):
+    progress = True
+    while progress:
+        progess = False
+        for row in range(9):
+            for col in range(9):
+                if board[row][col] == 0:
+                    
+
+# call the function to fill every cell with only one possible solution
