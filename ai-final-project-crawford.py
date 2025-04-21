@@ -78,5 +78,13 @@ def backtracking(board):
 # call the function to fill every cell with only one possible solution
 fill_obvious(puzzle)
 print("-----------")
+print("The obvious numbers:")
+for r in puzzle:
+    print(r)
+
+# calling backtracking to fill complicated cells
+backtracking(puzzle)
+print("-----------")
+print("The more complicated numbers:")
 for r in puzzle:
     print(r)
