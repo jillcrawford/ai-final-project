@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # scraping the sudoku puzzle from the internet
-url = 'https://nine.websudoku.com/?level=1'
+url = 'https://nine.websudoku.com/?level=3'
 web = requests.get(url)
 soup = BeautifulSoup(web.text, 'html.parser')
 
@@ -22,6 +22,7 @@ for row in range(9):
     puzzle.append(cur_row)
 
 # printing puzzle out
+print("The original puzzle:")
 for row in puzzle:
     print(row)
 
