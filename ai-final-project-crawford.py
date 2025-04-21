@@ -59,8 +59,21 @@ def fill_obvious(board):
                     if len(possible) == 1:
                         board[row][col] = possible[0]
                         progress = True
-#                        for r in board:
-#                            print(r)
+
+
+# backtracking function to solve more complex puzzles
+def backtracking(board):
+    for row in range(9):
+        for col in range(9):
+        if board[row][col] == 0:
+            for num in range(1, 10):
+                if is_valid(board, row, col, num):
+                    board[row][col] = num
+                    if backtracking(board):
+                        return True
+                    board[row][col] = 0
+                return False
+    return True
 
 # call the function to fill every cell with only one possible solution
 fill_obvious(puzzle)
