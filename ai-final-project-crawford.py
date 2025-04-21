@@ -5,7 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 
 # scraping the sudoku puzzle from the internet
-url = 'https://nine.websudoku.com/?level=1'
+url = 'https://nine.websudoku.com/?level=3'
 web = requests.get(url)
 soup = BeautifulSoup(web.text, 'html.parser')
 
@@ -22,6 +22,7 @@ for row in range(9):
     puzzle.append(cur_row)
 
 # printing puzzle out
+print("The original puzzle:")
 for row in puzzle:
     print(row)
 
@@ -47,3 +48,44 @@ def is_valid(board, row, col, num):
     
     return True
 
+# search through cells and see which spaces only have one valid number
+def fill_obvious(board):
+    progress = True
+    while progress:
+        progress = False
+        for row in range(9):
+            for col in range(9):
+                if board[row][col] == 0:
+                    possible = [num for num in range(1,10) if is_valid(board, row, col, num)]
+                    if len(possible) == 1:
+                        board[row][col] = possible[0]
+                        progress = True
+
+
+# backtracking function to solve more complex puzzles
+def backtracking(board):
+    for row in range(9):
+        for col in range(9):
+            if board[row][col] == 0:
+                for num in range(1, 10):
+                    if is_valid(board, row, col, num):
+                        board[row][col] = num
+                        if backtracking(board):
+                            return True
+                        board[row][col] = 0
+                return False
+    return True
+
+# call the function to fill every cell with only one possible solution
+fill_obvious(puzzle)
+print("-----------")
+print("The obvious numbers:")
+for r in puzzle:
+    print(r)
+
+# calling backtracking to fill complicated cells
+backtracking(puzzle)
+print("-----------")
+print("The more complicated numbers:")
+for r in puzzle:
+    print(r)
