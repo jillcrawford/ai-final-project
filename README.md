@@ -17,7 +17,7 @@ You can install the necessary packages with:
 
 ```bash
 pip install requests beautifulsoup4
-'''
+```bash
 
 ### Running It
 - You can run this program by typing "python ai-final-project-crawford.py" in your command terminal.
