@@ -1,7 +1,5 @@
 # ai-final-project
 
-# AI Sudoku Solver 🧠🧩
-
 ## Project Description
 This project scrapes a live Sudoku puzzle from the internet, analyzes it, and solves it using a two-phase AI agent. First, it fills in cells that have only one valid number based on Sudoku rules (the "duh" phase). Then, it switches to a recursive backtracking algorithm to crack the tougher parts of the puzzle (the "big brain" phase).
 
@@ -19,6 +17,7 @@ You can install the necessary packages with:
 
 ```bash
 pip install requests beautifulsoup4
+'''
 
 ### Running It
 - You can run this program by typing "python ai-final-project-crawford.py" in your command terminal.
