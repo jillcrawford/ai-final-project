@@ -15,10 +15,10 @@ The goal: utilize both efficiency and intelligence in solving logic-based puzzle
 
 You can install the necessary packages with:
 
-pip install requests beautifulsoup4
+`pip install requests beautifulsoup4`
 
 ### Running It
-- You can run this program by typing "python ai-final-project-crawford.py" in your command terminal.
+- You can run this program by typing `python ai-final-project-crawford.py` in your command terminal.
 - Once you run it, the program will:
   - Scrape a level 3 (hard) sudoku puzzle from websudoku.com
   - Print the original puzzle
