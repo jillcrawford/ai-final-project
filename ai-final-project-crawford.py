@@ -15,20 +15,17 @@ puzzle = []
 for row in range(9):
     cur_row = []
     for col in range(9):
-        cellnum = f'f{row}{col}'
+        cellnum = f'f{row}{col}' # ID format used by the site
         cell = soup.find('input', id=cellnum)
+        # if the cell has a value, use it; otherwise default to 0
         value = cell.get('value') if cell and cell.get('value') else 0
         cur_row.append(int(value))
     puzzle.append(cur_row)
 
-# printing puzzle out
+# printing the original puzzle out
 print("The original puzzle:")
 for row in puzzle:
     print(row)
-
-# agent to solve puzzle
-# first by checking if there are any cells with only one possible number
-# then through backtracking 
 
 # function to determine if a move is valid
 def is_valid(board, row, col, num):
@@ -56,10 +53,12 @@ def fill_obvious(board):
         for row in range(9):
             for col in range(9):
                 if board[row][col] == 0:
+                    # get all valid numbers for this cell
                     possible = [num for num in range(1,10) if is_valid(board, row, col, num)]
+                    # if only one number is valid, place it
                     if len(possible) == 1:
                         board[row][col] = possible[0]
-                        progress = True
+                        progress = True # continue checking after update 
 
 
 # backtracking function to solve more complex puzzles
@@ -72,9 +71,10 @@ def backtracking(board):
                         board[row][col] = num
                         if backtracking(board):
                             return True
+                        # undo move if it leads to a dead end
                         board[row][col] = 0
-                return False
-    return True
+                return False # no valid number found, start backtracking
+    return True # solved
 
 # call the function to fill every cell with only one possible solution
 fill_obvious(puzzle)
