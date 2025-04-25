@@ -1,5 +1,7 @@
 # ai-final-project-crawford.py
 # Jillian Crawford
+# 25 April 2025
+# CPSC 3550
 
 import requests
 from bs4 import BeautifulSoup
